@@ -1,9 +1,9 @@
-#import
+# import
 from src.project_parameters import ProjectParameters
 from DeepLearningTemplate.data_preparation import MySPEECHCOMMANDS, MyAudioFolder, AudioLightningDataModule
 
 
-#def
+# def
 def create_datamodule(project_parameters):
     if project_parameters.predefined_dataset:
         dataset_class = eval('My{}'.format(
@@ -25,7 +25,7 @@ def create_datamodule(project_parameters):
 
 
 if __name__ == '__main__':
-    #project parameters
+    # project parameters
     project_parameters = ProjectParameters().parse()
 
     # create datamodule

@@ -1,4 +1,4 @@
-#import
+# import
 from src.project_parameters import ProjectParameters
 from DeepLearningTemplate.model import BaseModel
 import timm
@@ -15,7 +15,7 @@ import seaborn as sns
 from torchsummary import summary
 
 
-#def
+# def
 def load_from_checkpoint(
     device,
     checkpoint_path,
@@ -70,7 +70,7 @@ def create_model(project_parameters):
     return model
 
 
-#class
+# class
 class SupervisedModel(BaseModel):
     def __init__(self, optimizers_config, lr, lr_schedulers_config, model_name,
                  in_chans, classes, loss_function_name, data_balance,
@@ -223,7 +223,7 @@ class SupervisedModel(BaseModel):
 
 
 if __name__ == '__main__':
-    #project parameters
+    # project parameters
     project_parameters = ProjectParameters().parse()
 
     # create model

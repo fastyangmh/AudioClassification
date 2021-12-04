@@ -1,4 +1,4 @@
-# parameters configuration
+#  parameters configuration
 mode: train
 root: data/
 predefined_dataset: SPEECHCOMMANDS
@@ -63,7 +63,7 @@ cpu_resources_per_trial: 1
 gpu_resources_per_trial: 1
 num_samples: 100
 
-# transforms configuration
+#  transforms configuration
 transforms_config:
   train:
     DigitalFilter:
@@ -127,7 +127,7 @@ transforms_config:
       - 224
       - 224
 
-# target transforms configuration
+#  target transforms configuration
 target_transforms_config:
   train:
     LabelSmoothing:
@@ -146,7 +146,7 @@ target_transforms_config:
     OneHotEncoder:
       num_classes: null
 
-# optimizers configuration
+#  optimizers configuration
 optimizers_config:
   Adam:
     betas:
@@ -156,12 +156,12 @@ optimizers_config:
     weight_decay: 0
     amsgrad: False
 
-# learning rate schedulers configuration
+#  learning rate schedulers configuration
 lr_schedulers_config:
   CosineAnnealingLR:
     T_max: 10
 
-# hyperparameter space configuration
+#  hyperparameter space configuration
 hyperparameter_space_config:
   lr:
     uniform:
