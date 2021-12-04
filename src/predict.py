@@ -1,4 +1,4 @@
-#import
+# import
 from src.project_parameters import ProjectParameters
 from DeepLearningTemplate.predict import AudioPredictDataset
 from src.model import create_model
@@ -11,7 +11,7 @@ from tqdm import tqdm
 import numpy as np
 
 
-#class
+# class
 class Predict:
     def __init__(self, project_parameters) -> None:
         self.model = create_model(project_parameters=project_parameters).eval()
@@ -25,7 +25,7 @@ class Predict:
         self.classes = project_parameters.classes
         self.loader = AudioLoader(sample_rate=project_parameters.sample_rate)
 
-    def __call__(self, filepath) -> Any:
+    def predict(self, filepath) -> Any:
         result = []
         if isfile(path=filepath):
             # predict the file
@@ -60,7 +60,7 @@ class Predict:
 
 
 if __name__ == '__main__':
-    #project parameters
+    # project parameters
     project_parameters = ProjectParameters().parse()
 
     # predict file

@@ -1,4 +1,4 @@
-#import
+# import
 from src.project_parameters import ProjectParameters
 from DeepLearningTemplate.predict_gui import BasePredictGUI
 from src.predict import Predict
@@ -11,7 +11,7 @@ from playsound import playsound
 import tkinter as tk
 
 
-#class
+# class
 class PredictGUI(BasePredictGUI):
     def __init__(self, project_parameters) -> None:
         super().__init__(extensions=('.wav'))
@@ -61,7 +61,7 @@ class PredictGUI(BasePredictGUI):
                 subplot.plot(time, waveform[(idx - 1) // cols])
             else:
                 # plot spectrogram
-                #TODO: display frequency and time.
+                # TODO: display frequency and time.
                 subplot.title.set_text(
                     'channel {} spectrogram'.format((idx - 1) // cols + 1))
                 subplot.imshow(sample[(idx - 1) // cols])
@@ -74,7 +74,7 @@ class PredictGUI(BasePredictGUI):
 
     def recognize(self):
         if self.filepath is not None:
-            predicted = self.predictor(filepath=self.filepath)
+            predicted = self.predictor.predict(filepath=self.filepath)
             text = ''
             for idx, (c, p) in enumerate(zip(self.classes, predicted)):
                 text += '{}: {}, '.format(c, p.round(3))
@@ -105,12 +105,12 @@ class PredictGUI(BasePredictGUI):
         self.predicted_label.pack(anchor=tk.N)
         self.result_label.pack(anchor=tk.N)
 
-        #run
+        # run
         super().run()
 
 
 if __name__ == '__main__':
-    #project parameters
+    # project parameters
     project_parameters = ProjectParameters().parse()
 
     # launch prediction gui

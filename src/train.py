@@ -1,4 +1,4 @@
-#import
+# import
 from src.project_parameters import ProjectParameters
 from DeepLearningTemplate.train import BaseTrain
 from src.data_preparation import create_datamodule
@@ -6,7 +6,7 @@ from src.model import create_model
 from typing import Any
 
 
-#class
+# class
 class Train(BaseTrain):
     def __init__(self, project_parameters) -> None:
         super().__init__(seed=project_parameters.seed)
@@ -38,7 +38,7 @@ class Train(BaseTrain):
 
 
 if __name__ == '__main__':
-    #project parameters
+    # project parameters
     project_parameters = ProjectParameters().parse()
 
     # train the model

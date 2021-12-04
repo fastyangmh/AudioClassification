@@ -1,4 +1,4 @@
-#import
+# import
 from src.project_parameters import ProjectParameters
 from DeepLearningTemplate.tuning import BaseTuning
 from ray import tune
@@ -13,7 +13,7 @@ from os.path import join
 from src.train import Train
 
 
-#class
+# class
 class Tuning(BaseTuning):
     def __init__(self, project_parameters, train_class) -> None:
         super().__init__()
@@ -94,7 +94,7 @@ class Tuning(BaseTuning):
 
 
 if __name__ == '__main__':
-    #project parameters
+    # project parameters
     project_parameters = ProjectParameters().parse()
 
     # tuning the model
