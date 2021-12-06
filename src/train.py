@@ -4,6 +4,7 @@ from DeepLearningTemplate.train import BaseTrain
 from src.data_preparation import create_datamodule
 from src.model import create_model
 from typing import Any
+from shutil import copy2
 
 
 # class
@@ -34,6 +35,8 @@ class Train(BaseTrain):
         for stage, dataloader in dataloaders_dict.items():
             result[stage] = self.trainer.test(dataloaders=dataloader,
                                               ckpt_path='best')[0]
+        #copy config to save directory
+        copy2(src=project_parameters.config, dst=self.trainer.logger.log_dir)
         return result
 
 

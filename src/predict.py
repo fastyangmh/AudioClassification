@@ -64,5 +64,5 @@ if __name__ == '__main__':
     project_parameters = ProjectParameters().parse()
 
     # predict file
-    result = Predict(project_parameters=project_parameters)(
+    result = Predict(project_parameters=project_parameters).predict(
         filepath=project_parameters.root)
