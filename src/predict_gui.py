@@ -55,9 +55,9 @@ class PredictGUI(BasePredictGUI):
                     'channel {} waveform'.format((idx - 1) // cols + 1))
                 subplot.set_xlabel('time')
                 subplot.set_ylabel('amplitude')
-                time = np.linspace(0, len(waveform[(idx - 1) // cols]),
-                                   len(waveform[(idx - 1) // cols])) / len(
-                                       waveform[(idx - 1) // cols])
+                time = np.linspace(
+                    0, len(waveform[(idx - 1) // cols]),
+                    len(waveform[(idx - 1) // cols])) / self.sample_rate
                 subplot.plot(time, waveform[(idx - 1) // cols])
             else:
                 # plot spectrogram
