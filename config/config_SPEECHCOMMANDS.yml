@@ -77,8 +77,8 @@ transforms_config:
       n_mels: 64
     AmplitudeToDB: null
     Resize:
-      - 224
-      - 224
+      - 64
+      - 81
     RandomErasing:
       value: -80
 
@@ -94,8 +94,8 @@ transforms_config:
       n_mels: 64
     AmplitudeToDB: null
     Resize:
-      - 224
-      - 224
+      - 64
+      - 81
 
   test:
     DigitalFilter:
@@ -109,8 +109,8 @@ transforms_config:
       n_mels: 64
     AmplitudeToDB: null
     Resize:
-      - 224
-      - 224
+      - 64
+      - 81
 
   predict:
     DigitalFilter:
@@ -124,8 +124,8 @@ transforms_config:
       n_mels: 64
     AmplitudeToDB: null
     Resize:
-      - 224
-      - 224
+      - 64
+      - 81
 
 #  target transforms configuration
 target_transforms_config:
