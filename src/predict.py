@@ -24,12 +24,18 @@ class Predict:
         self.num_workers = project_parameters.num_workers
         self.classes = project_parameters.classes
         self.loader = AudioLoader(sample_rate=project_parameters.sample_rate)
+        self.in_chans = project_parameters.in_chans
 
-    def predict(self, filepath) -> Any:
+    def predict(self, inputs) -> Any:
         result = []
-        if isfile(path=filepath):
+        if isfile(path=inputs):
             # predict the file
-            sample = self.loader(path=filepath)
+            sample = self.loader(path=inputs)
+            in_chans, _ = sample.shape
+            if in_chans != self.in_chans:
+                sample = sample.mean(0)
+                sample = torch.cat(
+                    [sample[None] for idx in range(self.in_chans)])
             # the transformed sample dimension is (1, in_chans, freq, time)
             sample = self.transform(sample)[None]
             if self.device == 'cuda' and torch.cuda.is_available():
@@ -38,7 +44,7 @@ class Predict:
                 result.append(self.model(sample).tolist()[0])
         else:
             # predict the file from folder
-            dataset = AudioPredictDataset(root=filepath,
+            dataset = AudioPredictDataset(root=inputs,
                                           loader=self.loader,
                                           transform=self.transform)
             pin_memory = True if self.device == 'cuda' and torch.cuda.is_available(
@@ -65,4 +71,4 @@ if __name__ == '__main__':
 
     # predict file
     result = Predict(project_parameters=project_parameters).predict(
-        filepath=project_parameters.root)
+        inputs=project_parameters.root)
