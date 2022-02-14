@@ -40,6 +40,10 @@ class Tuning(BaseTuning):
             tune.report(train_loss=train_loss,
                         val_loss=val_loss,
                         sum_of_train_and_val_loss=train_loss + val_loss)
+        space = hyperparameter_space.copy()
+        #the num_workers will set same as cpu_resources_per_trial
+        space['num_workers'] = project_parameters.cpu_resources_per_trial
+        print(f'hyperparameter_space: {space}')
 
     def tuning(self) -> Any:
         # NOTE: there is an error that cannot reproduce the best trial if the device is CPU.
