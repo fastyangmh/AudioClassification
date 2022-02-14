@@ -123,14 +123,9 @@ class SupervisedModel(BaseModel):
         weight = {}
         for c in classes:
             files = self.get_files(filepath=join(root, 'train/{}'.format(c)),
-                                   extensions=('.jpg', '.jpeg', '.png', '.ppm',
-                                               '.bmp', '.pgm', '.tif', '.tiff',
-                                               '.webp'))
+                                   extensions=('.wav','.flac'))
             weight[c] = len(files)
-        weight = {
-            c: 1 - (weight[c] / sum(weight.values()))
-            for c in weight.keys()
-        }
+        weight = {c: min(weight.values()) / weight[c] for c in weight.keys()}
         return weight
 
     def create_loss_function(self, loss_function_name, data_balance, root,
