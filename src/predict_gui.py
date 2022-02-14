@@ -15,7 +15,7 @@ import gradio as gr
 # class
 class PredictGUI(BasePredictGUI):
     def __init__(self, project_parameters) -> None:
-        super().__init__(extensions=('.wav'))
+        super().__init__(extensions=('.wav', '.flac'))
         self.predictor = Predict(project_parameters=project_parameters)
         self.classes = project_parameters.classes
         self.loader = AudioLoader(sample_rate=project_parameters.sample_rate)
