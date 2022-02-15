@@ -47,6 +47,13 @@ def load_from_checkpoint(
 
 
 def create_model(project_parameters):
+    if project_parameters.data_balance and project_parameters.mode not in [
+            'train', 'tuning'
+    ]:
+        print(
+            'please check the data_balance and mode arguments.\nyou set data_balance to True,\nbut these arguments are only valid in training and tuning mode.'
+        )
+        project_parameters.data_balance = False
     model = SupervisedModel(
         optimizers_config=project_parameters.optimizers_config,
         lr=project_parameters.lr,
@@ -116,14 +123,9 @@ class SupervisedModel(BaseModel):
         weight = {}
         for c in classes:
             files = self.get_files(filepath=join(root, 'train/{}'.format(c)),
-                                   extensions=('.jpg', '.jpeg', '.png', '.ppm',
-                                               '.bmp', '.pgm', '.tif', '.tiff',
-                                               '.webp'))
+                                   extensions=('.wav','.flac'))
             weight[c] = len(files)
-        weight = {
-            c: 1 - (weight[c] / sum(weight.values()))
-            for c in weight.keys()
-        }
+        weight = {c: min(weight.values()) / weight[c] for c in weight.keys()}
         return weight
 
     def create_loss_function(self, loss_function_name, data_balance, root,
