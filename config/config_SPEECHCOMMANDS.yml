@@ -75,84 +75,84 @@ num_samples: 100
 #  transforms configuration
 transforms_config:
   train:
-    DigitalFilter:
+    selfdefined.DigitalFilter:
       filter_type: bandpass
       sample_rate: 16000
       cutoff_freq: [300, 3000]
-    PadWaveform:
+    selfdefined.PadWaveform:
       max_waveform_length: 16000
-    MelSpectrogram:
+    torchaudio.MelSpectrogram:
       sample_rate: 16000
       n_mels: 64
-    AmplitudeToDB: null
-    Resize:
+    torchaudio.AmplitudeToDB: null
+    torchvision.Resize:
       - 64
       - 81
-    RandomErasing:
+    torchvision.RandomErasing:
       value: -80
 
   val:
-    DigitalFilter:
+    selfdefined.DigitalFilter:
       filter_type: bandpass
       sample_rate: 16000
       cutoff_freq: [300, 3000]
-    PadWaveform:
+    selfdefined.PadWaveform:
       max_waveform_length: 16000
-    MelSpectrogram:
+    torchaudio.MelSpectrogram:
       sample_rate: 16000
       n_mels: 64
-    AmplitudeToDB: null
-    Resize:
+    torchaudio.AmplitudeToDB: null
+    torchvision.Resize:
       - 64
       - 81
 
   test:
-    DigitalFilter:
+    selfdefined.DigitalFilter:
       filter_type: bandpass
       sample_rate: 16000
       cutoff_freq: [300, 3000]
-    PadWaveform:
+    selfdefined.PadWaveform:
       max_waveform_length: 16000
-    MelSpectrogram:
+    torchaudio.MelSpectrogram:
       sample_rate: 16000
       n_mels: 64
-    AmplitudeToDB: null
-    Resize:
+    torchaudio.AmplitudeToDB: null
+    torchvision.Resize:
       - 64
       - 81
 
   predict:
-    DigitalFilter:
+    selfdefined.DigitalFilter:
       filter_type: bandpass
       sample_rate: 16000
       cutoff_freq: [300, 3000]
-    PadWaveform:
+    selfdefined.PadWaveform:
       max_waveform_length: 16000
-    MelSpectrogram:
+    torchaudio.MelSpectrogram:
       sample_rate: 16000
       n_mels: 64
-    AmplitudeToDB: null
-    Resize:
+    torchaudio.AmplitudeToDB: null
+    torchvision.Resize:
       - 64
       - 81
 
 #  target transforms configuration
 target_transforms_config:
   train:
-    LabelSmoothing:
+    selfdefined.LabelSmoothing:
       alpha: 0.2
       num_classes: null
 
   val:
-    OneHotEncoder:
+    selfdefined.OneHotEncoder:
       num_classes: null
 
   test:
-    OneHotEncoder:
+    selfdefined.OneHotEncoder:
       num_classes: null
 
   predict:
-    OneHotEncoder:
+    selfdefined.OneHotEncoder:
       num_classes: null
 
 #  optimizers configuration
